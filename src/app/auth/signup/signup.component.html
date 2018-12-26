@@ -1,0 +1,44 @@
+<p>
+  signup works!
+</p>
+<section class="signup-form">
+  <form fxLayout="column" fxLayoutAlign="center center" #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+    <mat-form-field>
+      <input
+        type='email'
+        matInput
+        maxlength="25"
+        placeholder="Enter email"
+        ngModel
+        name="email"
+        email
+        required
+        #emailInput="ngModel">
+        <mat-error *ngIf="emailInput.hasError('required')">Field must not be empty.</mat-error>
+        <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Should be min 6 characters.">
+      <input
+        type='password'
+        matInput
+        placeholder="Enter password"
+        ngModel
+        name="password"
+        required
+        maxlength="20"
+        minlength="6"
+        #pwInput="ngModel">
+      <mat-hint align="end">{{pwInput.value?.length}} / 6</mat-hint>
+      <mat-error>Has to be at least 6 characters long.</mat-error>
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="!signupForm.form.valid">Submit</button>
+  </form>
+</section>
+
+<!-- <section id="container">
+  <div id="child1" class="child"></div>
+  <div id="child2" class="child"></div>
+  <div id="child3" class="child"></div>
+</section> -->

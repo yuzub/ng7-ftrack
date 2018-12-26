@@ -1,6 +1,15 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <h1>
   Welcome to {{ title }}!
 </h1>
+<button mat-icon-button color="accent">
+  <mat-icon>home</mat-icon>
+</button>
 
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [opened]="openSidenav" role="navigation" #sidenav>Sidenav content</mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-raised-button color="primary" (click)="openSidenav = !openSidenav">Show Sidenav</button>
+    <button mat-raised-button color="primary" (click)="sidenav.toggle()">Show Sidenav</button>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
