@@ -1,9 +1,9 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" role="navigation" #sidenav>
-    <ft-sidenav-list></ft-sidenav-list>
+    <ft-sidenav-list (closeSadnav)="sidenav.close()"></ft-sidenav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <ft-header></ft-header>
+    <ft-header (sidenavToggle)="sidenav.toggle()"></ft-header>
     <main>
       <router-outlet></router-outlet>
     </main>

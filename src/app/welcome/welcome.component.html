@@ -1,3 +1,6 @@
-<p>
-  welcome works!
-</p>
+<div class="welcome" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap.gt-md="20px">
+  <section *ngFor="let item of welcomes">
+    <h1>{{ item?.h | uppercase }}</h1>
+    <p>{{ item?.t }}</p>
+  </section>
+</div>
