@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { TrainingService } from './training.service';
 
 @Component({
   selector: 'ft-training',
@@ -7,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainingComponent implements OnInit {
   ongoingTraining = false;
+  exerciseSubscription: Subscription;
 
-  constructor() { }
+  constructor(private trainingServcice: TrainingService) { }
 
   ngOnInit() {
+    this.exerciseSubscription = this.trainingServcice.exerciseChanged
+      .subscribe(exercise => {
+        if (exercise) {
+          this.ongoingTraining = true;
+        } else {
+          this.ongoingTraining = false;
+        }
+      });
+
   }
 
 }
