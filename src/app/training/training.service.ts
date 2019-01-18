@@ -13,7 +13,7 @@ export class TrainingService {
     { id: 'burpees', name: 'Burpees', duration: 60, calories: 8 },
   ];
   private runningExercise: Exercise;
-  private exercises: Exercise[];
+  private exercises: Exercise[] = [];
 
   getAvailableExercises() {
     // call slice() to create a copy of array availableExercises
@@ -27,6 +27,8 @@ export class TrainingService {
   }
 
   completeExercise() {
+    console.log(this.runningExercise);
+    console.log(this.exercises);
     this.exercises.push({
       ...this.runningExercise,
       date: new Date(),
@@ -38,6 +40,8 @@ export class TrainingService {
   }
 
   cancelExercise(progress: number) {
+    console.log(this.runningExercise);
+    console.log(this.exercises);
     this.exercises.push({
       ...this.runningExercise,
       duration: this.runningExercise.duration * (progress / 100),
@@ -52,5 +56,10 @@ export class TrainingService {
 
   getRunningExercise() {
     return { ...this.runningExercise };
+  }
+
+  getCompletedOrCancelledExercises() {
+    return this.exercises;
+    // return this.exercises.slice();
   }
 }
